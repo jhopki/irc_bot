@@ -37,4 +37,8 @@ until irc_server.eof? do
     response = "Don't be a three-legged cat"
     irc_server.puts "PRIVMSG #{channel} :#{response}"
   end
+  if msg.include?(greeting_prefix) and msg.include?("the rest of ")
+    response = msg.sub(/"the rest of "/, "huh")
+    irc_server.puts "PRIVMSG #{channel} :#{response}"
+  end
 end
